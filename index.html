@@ -14,39 +14,41 @@
 </head>
 <body>
 
-<div class="app-container">
-    <div class="tabs">
-        <div class="tab active" onclick="showPage('calc', this)">Calculadora</div>
-        <div class="tab" onclick="showPage('lista', this)">Cotações</div>
-    </div>
+    <div id="toast" class="toast"></div>
 
-    <div class="content">
-        <div id="calc" class="page active">
-            <label>Moeda de Origem:</label>
-            <select id="moedaOrigem" onchange="salvarPreferencias(); converter()"></select>
+    <div class="app-container">
+        <div class="tabs">
+            <div class="tab active" onclick="showPage('calc', this)">Calculadora</div>
+            <div class="tab" onclick="showPage('lista', this)">Cotações</div>
+        </div>
 
-            <label>Digite o valor:</label>
-            <input type="number" id="valorInput" step="any" inputmode="decimal" placeholder="0.00" oninput="converter()">
+        <div class="content">
+            <div id="calc" class="page active">
+                <label>Moeda de Origem:</label>
+                <select id="moedaOrigem" onchange="salvarPreferencias(); converter()"></select>
 
-            <div class="result-box">
-                <small>Valor convertido (BRL)</small>
-                <span id="resultado">R$ 0,00</span>
+                <label>Digite o valor:</label>
+                <input type="number" id="valorInput" step="any" inputmode="decimal" placeholder="0.00" oninput="converter()">
+
+                <div class="result-box">
+                    <small>Valor convertido (BRL)</small>
+                    <span id="resultado">R$ 0,00</span>
+                </div>
+                <p></p>
+                <button class="update-btn" data-type="calc" onclick="atualizarCotacoes(this)">Atualizar Cotações</button>
+                <div class="status status-text">Aguardando atualização...</div>
             </div>
-            <p></p>
-            <button class="update-btn" data-type="calc" onclick="atualizarCotacoes(this)">Atualizar Cotações</button>
-            <div class="status status-text">Aguardando atualização...</div>
-        </div>
 
-        <div id="lista" class="page">
-            <h3>Câmbio Atual (1 un. = R$)</h3>
-            <button class="update-btn" data-type="lista" onclick="atualizarCotacoes(this)">Atualizar Lista</button>
-            <div class="status status-text">Aguardando atualização...</div>
-            <div id="listaContainer"></div>
+            <div id="lista" class="page">
+                <h3>Câmbio Atual (1 un. = R$)</h3>
+                <button class="update-btn" data-type="lista" onclick="atualizarCotacoes(this)">Atualizar Lista</button>
+                <div class="status status-text">Aguardando atualização...</div>
+                <div id="listaContainer"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
